@@ -1,0 +1,16 @@
+g++ -o makelogo makelogo.cpp
+
+./makelogo > bootlogo
+
+cat start_logo.h > logo_rgb24_wvga_portrait.h
+cat bootlogo >> logo_rgb24_wvga_portrait.h
+cat end_logo.h >> logo_rgb24_wvga_portrait.h
+
+cp logo_rgb24_wvga_portrait.h  kernel/drivers/video/samsung/
+
+
+If you wish to use a custom logo:
+
+Use GIMP to create a 480x800 24bit RGB image.
+Save as "C source code feader (*.h)"
+edit makelogo.cpp to include the new image.
